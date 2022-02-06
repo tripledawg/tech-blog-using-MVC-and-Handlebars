@@ -11,7 +11,7 @@ controller.get('/', async (req, res) => {
   });
   if (findAllBlogposts) {
     res.render('all', {
-      findAllBlogposts,
+      blog_post: findAllBlogposts
       // Pass the logged in flag to the template
       // logged_in: req.session.logged_in,
     });

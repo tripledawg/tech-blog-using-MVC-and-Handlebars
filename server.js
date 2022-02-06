@@ -14,7 +14,7 @@ app.set('view engine', 'handlebars');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use(express.static('public'));
 app.use(controllers);
 
 // sync sequelize models to the database, then turn on the server

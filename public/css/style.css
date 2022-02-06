@@ -16,7 +16,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   justify-content: flex-start;
-  background-color: var(--quatrinary);
+  background-color: var(--tertiary);
 }
 
 header {
@@ -41,11 +41,58 @@ aside {
   color: var(--light);
 }
 
-nav {
+ header h1 {
   display: flex;
-  background-color: var(--secondary);
+  flex-wrap: wrap;
+  font-size: 40px;
+  margin: auto;
+  float: left;
 }
 
+header nav {
+  background-color: var(--secondary);
+  display: flex;
+  padding: auto;
+  margin: auto;
+  float: right;
+  font-size: 24px;
+  
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex; 
+} 
+
+nav ul li {
+  display: inline-block;
+  color: white;
+  justify-content: space-evenly;
+}
+    
+    nav ul{
+      list-style: none;
+      margin: 0 2px;
+      padding: 0;
+    }
+    
+    nav li {
+       display: inline-block;
+       padding: 5px 5px;
+       font-size: larger;
+    }
+    
+    nav a {
+      font-weight: normal;
+      padding: 10px 5px;
+      font-size: .80em;
+    }
+  /* display: flex;
+  flex: 1 0 20px; */
+  /* display: inline-block; 
+  margin-left: 25px;
+  
+}
 .menu-container {
   display: flex;
   flex-wrap: wrap;
@@ -98,7 +145,7 @@ nav {
 }
 
 /* CARDS */
-.dish-card {
+/* .dish-card {
   margin: 20px;
   flex: 0 1 300px;
   padding: 5px;
@@ -153,7 +200,7 @@ nav {
   padding: 2.5%;
   font-size: 1.4rem;
   text-align: center;
-}
+} */
 
 /* LAYOUT */
 .container {
