@@ -10,8 +10,12 @@ controller.get('/', async (req, res) => {
     ]
   });
   if (findAllBlogposts) {
-    res.status(200).json(findAllBlogposts);
-  }
+    res.render('all', {
+      findAllBlogposts,
+      // Pass the logged in flag to the template
+      // logged_in: req.session.logged_in,
+    });
+  } 
   else {
     res.status(404).json('No blog posts found.');
   }
