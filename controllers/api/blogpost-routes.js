@@ -10,8 +10,9 @@ controller.get('/', async (req, res) => {
     ]
   });
   if (findAllBlogposts) {
+    console.log(findAllBlogposts);
     res.render('all', {
-      blog_post: findAllBlogposts
+      blog_posts: findAllBlogposts
       // Pass the logged in flag to the template
       // logged_in: req.session.logged_in,
     });
@@ -29,7 +30,7 @@ controller.get('/:id', async (req, res) => {
     ]
   });
   if (singleBlogpost) {
-    res.status(200).json(singleBlogpost);
+    res.render('onePostWithComments', {blog_post: singleBlogpost});
   }
   else {
     res.status(404).json('No blog posts found.');

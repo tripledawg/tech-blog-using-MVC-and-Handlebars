@@ -27,10 +27,10 @@ Blogpost.init(
             allowNull: false,
         },
         contents: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false,
         },
-        dateUpdated: {
+        date_updated: {
             type: DataTypes.DATE,
             allowNull: false,
         }
