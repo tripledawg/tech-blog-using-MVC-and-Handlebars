@@ -6,13 +6,15 @@ const { Blogpost, Comment, User } = require('../../models');
 controller.get('/', async (req, res) => {
   const findAllBlogposts = await Blogpost.findAll({
     include: [
-      { model: User }
-    ]
+      { model: User, attributes: ['id', 'username', 'email'] }  //tells what to return about user (not password)
+    ],
+    attributes: ['title', 'contents', 'date_updated'],
+    order: [['date_updated', 'DESC']]  //returns posts newest first so can do for each
   });
   if (findAllBlogposts) {
-    console.log(findAllBlogposts);
+    const orderedBlogPosts = findAllBlogposts.map((data) => data.get({plain : true}));
     res.render('all', {
-      blog_posts: findAllBlogposts
+      blog_posts: orderedBlogPosts
       // Pass the logged in flag to the template
       // logged_in: req.session.logged_in,
     });

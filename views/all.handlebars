@@ -1,13 +1,14 @@
 {{!-- for each to parse what is in blodpost object --}}
-<div class="blogpost-card">
-    {{#each blog_posts[0] as |post|}}
-  </div>
+ {{#each blog_posts as |post|}}
+ <div class="blogpost-card">
    <div class="dish col-md-5">
       <!-- We use dish.id instead of <od> and <li> elements. -->
       <p>
-        {{post.id}}
         {{post.title}}
-        {{post.content}}
-        {{post.date}}
+        {{post.user.username}}
+        {{post.date_updated}}
+        {{post.contents}}
       </p>
     </div>
+  </div>
+  {{/each}}
