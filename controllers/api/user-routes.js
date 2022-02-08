@@ -4,12 +4,12 @@ const { User } = require('../../models');
 
 // GET login page
 controller.get ('/login', async(req, res) => {
-
+res.render('loginPage');  //loginPage.handlebars
 })
 
 // GET signup page
 controller.get ('/signup', async(req, res) => {
-    
+  res.render('signupPage'); //signupPage.handlebars 
 })
 
 // POST new signup

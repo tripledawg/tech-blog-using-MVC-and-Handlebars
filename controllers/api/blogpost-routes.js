@@ -6,33 +6,18 @@ const { Blogpost, Comment, User } = require('../../models');
 controller.get('/', async (req, res) => {
   const findAllBlogposts = await Blogpost.findAll({
     include: [
-      { model: User, attributes: ['id', 'username', 'email'] }  //tells what to return about user (not password)
+      { model: User, attributes: ['username'] }  //tells what to return about user (not password)
     ],
     attributes: ['title', 'contents', 'date_updated'],
     order: [['date_updated', 'DESC']]  //returns posts newest first so can do for each
   });
   if (findAllBlogposts) {
-    const orderedBlogPosts = findAllBlogposts.map((data) => data.get({plain : true}));
+    const orderedBlogPosts = findAllBlogposts.map((data) => data.get({ plain: true }));
     res.render('all', {
       blog_posts: orderedBlogPosts
       // Pass the logged in flag to the template
       // logged_in: req.session.logged_in,
     });
-  } 
-  else {
-    res.status(404).json('No blog posts found.');
-  }
-});
-// GET single post with comments - Dashboard
-controller.get('/:id', async (req, res) => {
-  const singleBlogpost = await Blogpost.findByPk(req.params.id, {
-    include: [
-      { model: Comment },
-      { model: User }
-    ]
-  });
-  if (singleBlogpost) {
-    res.render('onePostWithComments', {blog_post: singleBlogpost});
   }
   else {
     res.status(404).json('No blog posts found.');
@@ -40,6 +25,30 @@ controller.get('/:id', async (req, res) => {
 });
 // GET new blog post page
 //point to handlebars template
+controller.get('/new', async (req, res) => {
+  res.render('getNewBlogPost');
+});
+
+// GET single post with comments - Dashboard
+controller.get('/:id', async (req, res) => {
+  const singleBlogpost = await Blogpost.findByPk(req.params.id, {
+    include: [
+      {
+        model: Comment, attributes: ['contents', 'date_updated'], order: [['date_updated', 'DESC']]
+      },
+      { model: User, attributes: ['username'] }
+    ],
+    attributes: ['title', 'contents', 'date_updated'],
+  });
+  if (singleBlogpost) {
+    const post = singleBlogpost.get({ plain: true });
+    res.render('onePostWithComments', { post: post });
+  }
+  else {
+    res.status(404).json('No blog posts found.');
+  }
+});
+
 
 // POST new blog post  
 controller.post('/', (req, res) => {
@@ -68,12 +77,11 @@ controller.post('/', (req, res) => {
 // GET one blog post to edit
 controller.get('/:id/update', async (req, res) => {
   const singleBlogpost = await Blogpost.findByPk(req.params.id, {
-    include: [
-      { model: User }
-    ]
+    attributes: ['title', 'contents'],
   });
   if (singleBlogpost) {
-    res.status(200).json(singleBlogpost);
+    const post = singleBlogpost.get({ plain: true });
+    res.render('onePostToEdit', { post: post });
   }
   else {
     res.status(404).json('No blog posts found.');
