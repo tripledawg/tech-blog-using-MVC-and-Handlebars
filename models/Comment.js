@@ -4,7 +4,6 @@ const sequelize = require('../config/connection');
 class Comment extends Model { }
 
 Comment.init(
-    // define columns
     {
         id: {
             type: DataTypes.INTEGER,
@@ -19,7 +18,24 @@ Comment.init(
         date_updated: {
             type: DataTypes.DATE,
             allowNull: false,
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'user',
+                key: 'id',
+            },
+        },
+        blogpost_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'blogpost',
+                key: 'id',
+            },
         }
+
     },
     {
         sequelize,
