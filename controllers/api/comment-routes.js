@@ -3,6 +3,8 @@ const { Blogpost, Comment, User } = require('../../models');
 
 // POST new comment
 controller.post('/', async (req, res) => {
+        //res.render('gallery', { gallery, loggedIn: req.session.loggedIn });
+
  const newComment = await Comment.create(req.body);
  const singleBlogpost = await Blogpost.findByPk(newComment.blogpost_id, {
   include: [

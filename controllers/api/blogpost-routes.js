@@ -16,6 +16,7 @@ controller.get('/', async (req, res) => {
     res.render('all', {
       blog_posts: orderedBlogPosts
       // Pass the logged in flag to the template
+      //res.render('gallery', { gallery, loggedIn: req.session.loggedIn });
       // logged_in: req.session.logged_in,
     });
   }
