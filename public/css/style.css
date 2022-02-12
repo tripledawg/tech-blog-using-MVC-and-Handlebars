@@ -7,6 +7,12 @@
   --dark: #182c23;
   --error: rgb(228, 46, 1);
   --border-radius: 0.3rem;
+  /* CSS HEX */
+--eggshell: #f4f1deff;
+--terra-cotta: #e07a5fff;
+--independence: #3d405bff;
+--green-sheen: #81b29aff;
+--deep-champagne: #f2cc8fff;
 }
 
 body {
@@ -16,14 +22,14 @@ body {
   flex-direction: column;
   min-height: 100vh;
   justify-content: flex-start;
-  background-color: var(--tertiary);
+  background-color: var(--eggshell);
 }
 
 header {
   padding: 40px;
   text-align: center;
-  background: var(--primary);
-  color: var(--secondary);
+  background: var(--independence);
+  color: var(--deep-champagne);
   border-bottom-style: solid;
 }
 
@@ -50,7 +56,7 @@ aside {
 }
 
 header nav {
-  background-color: var(--secondary);
+  background-color: var(--green-sheen);
   display: flex;
   padding: auto;
   margin: auto;
@@ -142,27 +148,28 @@ nav ul li {
   padding: 50px;
   text-align: center;
   background-color: var(--tertiary);
-}
+} */
 
 /* CARDS */
-/* .dish-card {
-  margin: 20px;
-  flex: 0 1 300px;
+ .blogpost-card {
+  /* margin: 20px;
+  flex: 0 1 300px; */
+  display: inline-block;
   padding: 5px;
-  width: 35%;
-  min-height: 100%;
-  min-width: 35%;
+  width: 100%;
+  /* min-height: 100%; */
+  min-width: 100%;
   border: 3px solid var(--primary);
   border-radius: var(--border-radius);
   border-style: solid;
   border-width: medium;
   background-color: var(--light);
   color: var(--dark);
-}
-
+} 
+/* 
 .menu-card {
   margin: 50px;
-  flex: 0 1 300px;
+  flex: 0 1 100px;
   padding: 5px;
   border: 3px solid var(--dark);
   border-radius: var(--border-radius);
@@ -170,9 +177,10 @@ nav ul li {
   border-width: thick;
   background-color: var(--light);
   color: var(--dark);
-}
+} */
 
-.card-header {
+.blogpost-card-header {
+  width: 100%;
   color: var(--light);
   margin: 0;
   background-color: var(--secondary);

@@ -1,3 +1,4 @@
+//requiring Comment model from one level up 
 const { Comment } = require('../models');
 
 const commentData = [

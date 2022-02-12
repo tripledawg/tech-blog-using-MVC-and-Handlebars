@@ -1,3 +1,4 @@
+//requiring User model from one level up 
 const { User } = require('../models');
 
 const userData = [
