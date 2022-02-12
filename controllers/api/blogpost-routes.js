@@ -1,29 +1,6 @@
 const controller = require('express').Router();
 const { Blogpost, Comment, User } = require('../../models');
 
-//GET all posts - Homepage
-
-controller.get('/', async (req, res) => {
-  const findAllBlogposts = await Blogpost.findAll({
-    include: [
-      { model: User, attributes: ['username'] }  //tells what to return about user model (just username, not password)
-    ],
-    attributes: ['title', 'contents', 'date_updated'],
-    order: [['date_updated', 'DESC']]  //returns posts newest first so can do for each
-  });
-  if (findAllBlogposts) {  //if there are any posts, render them
-    const orderedBlogPosts = findAllBlogposts.map((data) => data.get({ plain: true }));
-    res.render('all', {  //handlebars html template
-      blog_posts: orderedBlogPosts
-      // Pass the logged in flag to the template
-      //res.render('findAllBlogposts', { findAllblogposts , loggedIn: req.session.loggedIn });
-      // logged_in: req.session.logged_in,
-    });
-  }
-  else {
-    res.status(404).json('No blog posts found.');
-  }
-});
 
 // GET new blog post page
 controller.get('/new', async (req, res) => {

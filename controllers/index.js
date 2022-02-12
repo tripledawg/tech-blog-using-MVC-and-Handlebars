@@ -1,11 +1,8 @@
 const controller = require('express').Router();
 //requiring api folder
 const apiRoutes = require('./api');
+const homeRoutes = require('./home-routes');
 //assingning endpoint to route above
 controller.use('/api', apiRoutes);
-
-controller.use((req, res) => {
-  res.send("<h1>Wrong Route!</h1>")
-});
-
+controller.use('/', homeRoutes);
 module.exports = controller;
