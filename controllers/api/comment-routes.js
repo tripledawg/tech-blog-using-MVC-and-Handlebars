@@ -1,8 +1,9 @@
 const controller = require('express').Router();
 const { Blogpost, Comment, User } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // POST new comment
-controller.post('/', async (req, res) => {
+controller.post('/', withAuth, async (req, res) => {
         //res.render('gallery', { gallery, loggedIn: req.session.loggedIn });
 
  const newComment = await Comment.create(req.body);
