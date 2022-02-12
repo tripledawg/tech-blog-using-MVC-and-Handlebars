@@ -6,17 +6,17 @@ const { Blogpost, Comment, User } = require('../../models');
 controller.get('/', async (req, res) => {
   const findAllBlogposts = await Blogpost.findAll({
     include: [
-      { model: User, attributes: ['username'] }  //tells what to return about user (not password)
+      { model: User, attributes: ['username'] }  //tells what to return about user model (just username, not password)
     ],
     attributes: ['title', 'contents', 'date_updated'],
     order: [['date_updated', 'DESC']]  //returns posts newest first so can do for each
   });
-  if (findAllBlogposts) {
+  if (findAllBlogposts) {  //if there are any posts, render them
     const orderedBlogPosts = findAllBlogposts.map((data) => data.get({ plain: true }));
-    res.render('all', {
+    res.render('all', {  //handlebars html template
       blog_posts: orderedBlogPosts
       // Pass the logged in flag to the template
-      //res.render('gallery', { gallery, loggedIn: req.session.loggedIn });
+      //res.render('findAllBlogposts', { findAllblogposts , loggedIn: req.session.loggedIn });
       // logged_in: req.session.logged_in,
     });
   }
@@ -24,11 +24,12 @@ controller.get('/', async (req, res) => {
     res.status(404).json('No blog posts found.');
   }
 });
+
 // GET new blog post page
-//point to handlebars template
 controller.get('/new', async (req, res) => {
-  res.render('getNewBlogPost');
+  res.render('getNewBlogPost');//handlebars html template
 });
+
 
 // GET single post with comments - Dashboard
 controller.get('/:id', async (req, res) => {
@@ -43,7 +44,8 @@ controller.get('/:id', async (req, res) => {
   });
   if (singleBlogpost) {
     const post = singleBlogpost.get({ plain: true });
-    res.render('onePostWithComments', { post: post });
+    //to handlebars html template
+    res.render('onePostWithComments', { post: post });  
   }
   else {
     res.status(404).json('No blog posts found.');
@@ -63,7 +65,8 @@ controller.post('/', async (req, res) => {
   });
   if (findAllBlogposts) {
     const orderedBlogPosts = findAllBlogposts.map((data) => data.get({ plain: true }));
-    res.render('all', {
+    //to handlebars html template
+    res.render('all', {    
       blog_posts: orderedBlogPosts
       // Pass the logged in flag to the template
       // logged_in: req.session.logged_in,
@@ -81,6 +84,7 @@ controller.get('/:id/update', async (req, res) => {
   });
   if (singleBlogpost) {
     const post = singleBlogpost.get({ plain: true });
+    //to handlebars html template
     res.render('onePostToEdit', { post: post });
   }
   else {
@@ -107,6 +111,7 @@ controller.put('/:id', async (req, res) => {
   });
   if (singleBlogpost) {
     const post = singleBlogpost.get({ plain: true });
+    //to handlebars html template
     res.render('onePostWithComments', { post: post });
   }
   else {
@@ -117,10 +122,9 @@ controller.put('/:id', async (req, res) => {
 // DELETE one post
 controller.delete('/:id', (req, res) => {
   // delete one product by its `id` value
-  Blogpost.destroy({ where: { id: req.params.id } })
+  Blogpost.destroy({ where: { id: req.params.id } })  //destroy by id parameter
     .then((blogpost) => {
-
-      res.status(200).json(blogpost);
+      res.status(200).json(blogpost);  
     })
     .catch((err) => {
       console.log(err);

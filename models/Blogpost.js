@@ -1,12 +1,13 @@
+//pulling in model and datatype classes from sequelize package
 const { Model, DataTypes } = require('sequelize');
+//connecting sequlize to connection and .env
 const sequelize = require('../config/connection');
 
 class Blogpost extends Model {
-
 }
 
 Blogpost.init(
-    // define columns
+    // defining table columns
     {
         id: {
             type: DataTypes.INTEGER,

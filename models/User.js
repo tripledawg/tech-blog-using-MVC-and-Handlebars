@@ -1,4 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
+//adding node module for encryption
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
@@ -39,7 +40,7 @@ User.init(
   {
     hooks: {
       async beforeCreate(newUserData) {
-        newUserData.password = await bcrypt.hash(newUserData.password, 10);
+        newUserData.password = await bcrypt.hash(newUserData.password, 10);  //password length
         return newUserData;
       },
     },

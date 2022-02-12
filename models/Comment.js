@@ -19,6 +19,7 @@ Comment.init(
             type: DataTypes.DATE,
             allowNull: false,
         },
+        //tying a comment to a user and a specific post
         user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
