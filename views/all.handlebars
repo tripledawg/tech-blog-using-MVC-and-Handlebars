@@ -1,14 +1,15 @@
 {{!-- all -- using for each to parse what is in blogpost object --}}
- {{#each blog_posts as |post|}}
- <div class="blogpost-card">
-   <div>
-      <!-- -->
-      <h3 class="blogpost-card-header">
-        {{post.title}}
-        {{post.user.username}}
-        {{post.date_updated}}
-      </h3>
-        {{post.contents}} 
-    </div>
+{{#each blog_posts as |post|}}
+<div class="blog-cards-container">
+<div class="blogpost-card">
+  <div>
+    <!-- -->
+    <h2 class="blogpost-card-header">
+      {{post.title}}
+      <h3>{{post.user.username}}</h3>
+      <h4> {{post.date_updated}}</h4>
+      <p>{{post.contents}} </p>
   </div>
-  {{/each}}
+</div>
+</div>
+{{/each}}

@@ -18,10 +18,10 @@
   ## Installation: 
   This is a deployed web app, so no special directions are required.  
   ## Usage: 
-  Users are able to sign up or log in to the app.  There they can read, post and update blog posts and comment to blog posts.  They can also delete blog posts and comments.  User data from login session is protected.  
+  Users are able to sign up or log in to the app.  There they can read, post, and update blog posts.  Users are also able to leave comments on blog posts.  They can also delete blog posts and comments.  User data from login session is protected.  
   ## License: 
   None Provided 
   ## Questions: 
-  lmc@uga.edu
+  lmc@uga.edu◊
   
   <https://github.com/tripledawg>
