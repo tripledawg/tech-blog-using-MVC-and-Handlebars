@@ -1,7 +1,8 @@
 
 # Tech Blog Using MVC and Handlebars
-  ## ![full size screenshot](screenshot.png) 
-  ![responsive screenshot](screenshot_responsive.png) 
+  ## ![screenshot](screenshot.png) 
+  ## ![login screenshot](screenshotlogin.png) 
+  ## ![signup screenshot](screenshotsignup.png)
   ## Licensing:
   [![license](https://img.shields.io/badge/license-none-blue)](https://shields.io)
   ## Table of Contents: 
