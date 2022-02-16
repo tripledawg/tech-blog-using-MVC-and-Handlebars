@@ -33,7 +33,7 @@ app.use(express.static('public'));
 app.use(controllers);
 
 // sync sequelize models to the database, then turn on the server
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync().then(() => {
   app.listen(PORT, () => console.log('Now listening on ' + PORT));
 });
 
