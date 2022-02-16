@@ -54,7 +54,7 @@ controller.post('/login', async (req, res) => {
         .json({ message: 'Incorrect email or password, please try again' });
       return;
     }
-
+console.log(validPassword);
     // Create session variables based on the logged in user
     req.session.save(() => {
       req.session.user_id = userData.id;
@@ -64,6 +64,7 @@ controller.post('/login', async (req, res) => {
     });
 
   } catch (err) {
+   console.log(err);
     res.status(400).json(err);
   }
 });
