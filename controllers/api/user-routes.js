@@ -69,7 +69,7 @@ console.log(validPassword);
   }
 });
 
-controller.post('/logout', (req, res) => {
+controller.get('/logout', (req, res) => {
   if (req.session.logged_in) {
     // Remove the session variables
     req.session.destroy(() => {
@@ -79,6 +79,9 @@ controller.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
+
+
+
 
 module.exports = controller;
 
